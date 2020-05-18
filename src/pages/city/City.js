@@ -9,6 +9,8 @@ class City extends Component {
     new BScroll(document.getElementById('city_1'), {
       click: true,
     })
+
+    
     new BScroll(document.getElementById('FF'), {
       click: true,
     })
