@@ -1,0 +1,25 @@
+.nav {
+  :global {
+  }
+}
+.content {
+  :global {
+    .am-grid.am-grid-square .am-grid-item .am-grid-item-inner-content .am-grid-icon {
+      width: 64% !important;
+    }
+  }
+}
+.baike {
+  margin: 20px 0;
+  background-color: #fff;
+  h3 {
+    color: #19c36b;
+    padding-top: 5px;
+    margin-bottom: 0;
+    span {
+      font-size: 14px;
+      color: #e0e0e0;
+    }
+  }
+}
+

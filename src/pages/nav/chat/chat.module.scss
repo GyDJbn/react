@@ -1,0 +1,27 @@
+.box {
+  width: 70%;
+  background-color: #fff;
+  margin: 30% auto;
+  padding: 0 30px 30px;
+  text-align: center;
+  font-size: 1.1em;
+  .img {
+    width: 100%;
+    img {
+      width: 100%;
+      border-radius: 50%;
+    }
+  }
+  div{
+    span{
+      color: #68AE09;
+    }
+  }
+  p{
+    margin: 10px 0;
+  }
+  .WeChat{
+    background-color: green;
+    color: #fff;
+  }
+}

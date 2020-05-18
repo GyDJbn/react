@@ -1,0 +1,21 @@
+.box {
+  height: 100vh;
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+}
+.box img {
+  width: 75%;
+}
+.reg {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 10px;
+}
+.reg a {
+  color: #00bc5b;
+}
+.box .botton {
+  background-color: rgb(0, 188, 91);
+  color: rgb(255, 255, 255);
+  margin: 10px 0;
+}
