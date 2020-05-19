@@ -5,13 +5,12 @@ import CityJson from '../../json/City.json'
 import BScroll from 'better-scroll'
 const Item = List.Item
 class City extends Component {
+  handleClick(v) {
+    console.log(v)
+    this.cityBS.scrollToElement('#' + v, 800)
+  }
   componentDidMount() {
-    new BScroll(document.getElementById('city_1'), {
-      click: true,
-    })
-
-    
-    new BScroll(document.getElementById('FF'), {
+    this.cityBS = new BScroll('#city_1', {
       click: true,
     })
   }
@@ -25,18 +24,18 @@ class City extends Component {
         >
           选择城市
         </NavBar>
-        <div id="city_1" style={{ overflowY: 'scroll', height: '95vh' }}>
+        <div id="city_1" style={{ overflowY: 'scroll', height: '92vh' }}>
           <div>
-            {CityJson.city.map((v) => {
+            {CityJson.city.map((obj) => {
               return (
                 <List
-                  renderHeader={() => v.title}
-                  className={v.title}
-                  key={v.title}
-                  id={v.title}
+                  renderHeader={() => obj.title}
+                  className={obj.title}
+                  key={obj.title}
+                  id={obj.title}
                 >
-                  {v.lists.map((_) => {
-                    return <Item key={_}>{_}</Item>
+                  {obj.lists.map((v) => {
+                    return <Item key={v}>{v}</Item>
                   })}
                 </List>
               )
@@ -50,14 +49,19 @@ class City extends Component {
             zIndex: '2',
             top: '10%',
             right: '5%',
-            height: '80vh',
-            overflowY: 'scroll',
+            textAlign:'center'
           }}
         >
           <div>
             {CityJson.city.map((v, i) => {
               return (
-                <div key={i} style={{ marginTop: '5px' }}>
+                <div
+                  onClick={() => {
+                    this.handleClick(v.title)
+                  }}
+                  key={i}
+                  style={{ marginTop: '2px' }}
+                >
                   {v.title}
                 </div>
               )

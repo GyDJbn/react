@@ -13,7 +13,7 @@ export default class Nav extends Component {
   render() {
     return (
       <div>
-        <div style={{ height: '100vh' }}>
+        <div style={ { position: 'fixed', height: '100%', width: '100%', top: 0 }}>
           <TabBar
             tabBarPosition='bottom'
             unselectedTintColor="#949494"

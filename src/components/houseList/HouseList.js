@@ -8,7 +8,6 @@ export default class HouseList extends Component {
   }
   async componentDidMount() {
     const { data } = await gethouselist()
-    console.log(data)
     this.setState({ likeData: data })
   }
   render() {

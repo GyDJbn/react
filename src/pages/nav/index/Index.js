@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { NavBar, Icon, Carousel, Grid, WingBlank, SearchBar } from 'antd-mobile'
+import { NavBar, Carousel, Grid, WingBlank, SearchBar } from 'antd-mobile'
 import * as style from './index.module.scss'
 import HouseList from '../../../components/houseList/HouseList'
 import { withRouter } from 'react-router-dom'
@@ -59,9 +59,35 @@ class Index extends Component {
         text: '扫一扫',
       },
     ],
+    city: '定位中'
   }
-  seletCity = () => {
-    this.props.history.push('/city')
+  handleClick(v) {
+    console.log(v)
+    this.props.history.push(v)
+  }
+  componentDidMount() {
+    // 定位
+    //获取用户所在城市信息
+    var citysearch = new window.AMap.CitySearch();
+    // 自动获取用户IP，返回当前城市
+    citysearch.getLocalCity((status, result) =>{
+      if (status === 'complete' && result.info === 'OK') {
+        if (result && result.city && result.bounds) {
+          var cityinfo = result.city
+          // var citybounds = result.bounds
+          console.log(cityinfo)
+          this.setState({
+            city: cityinfo
+          })
+          // //地图显示当前城市
+          // map.setBounds(citybounds)
+        }
+      } else {
+        this.setState({
+          city: result.info
+        })
+      }
+    })
   }
 
   render() {
@@ -70,9 +96,20 @@ class Index extends Component {
         <div className={style['nav']}>
           <NavBar
             style={{ backgroundColor: '#00BC5B' }}
-            onLeftClick={this.seletCity}
-            leftContent={'重庆市'}
-            rightContent={[<Icon key="1" type="ellipsis" />]}
+            onLeftClick={() => {
+              this.handleClick('/city')
+            }}
+            leftContent={this.state.city}
+            rightContent={[
+              <i
+                style={{ fontSize: '1.3em' }}
+                onClick={() => {
+                  this.handleClick('/map')
+                }}
+                key="1"
+                className="iconfont icon-ditu"
+              />,
+            ]}
           >
             <SearchBar
               style={{

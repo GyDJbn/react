@@ -5,6 +5,7 @@ import Login from '../pages/login/Login'
 import Regster from '../pages/regster/Regster'
 import City from '../pages/city/City'
 import Error404 from '../pages/error/404'
+import Map from '../pages/map/Map'
 export default class MainRouter extends Component {
   render() {
     return (
@@ -14,9 +15,9 @@ export default class MainRouter extends Component {
           <Route path="/login" component={Login}></Route>
           <Route path="/regster" component={Regster}></Route>
           <Route path="/city" component={City}></Route>
-
+          <Route path="/map" component={Map}></Route>
           {/* 默认 */}
-          <Route component = {Error404}></Route>
+          <Route component={Error404}></Route>
         </Switch>
       </HashRouter>
     )
