@@ -1,21 +1,30 @@
 import React, { Component } from 'react'
-import { TabBar } from 'antd-mobile'
+import { TabBar, Toast } from 'antd-mobile'
 import Index from './index/Index'
 import Pat from './pat/Pat'
 import My from './my/My'
 import Chat from './chat/Chat'
 
-
 export default class Nav extends Component {
   state = {
     selectedTab: 'index',
   }
+  componentDidMount() {
+    const acc = localStorage.getItem('acc')
+    if (!acc) {
+      Toast.fail('请先登陆', 2)
+      this.props.history.push('/login')
+      return
+    }
+  }
   render() {
     return (
       <div>
-        <div style={ { position: 'fixed', height: '100%', width: '100%', top: 0 }}>
+        <div
+          style={{ position: 'fixed', height: '100%', width: '100%', top: 0 }}
+        >
           <TabBar
-            tabBarPosition='bottom'
+            tabBarPosition="bottom"
             unselectedTintColor="#949494"
             tintColor="#1afa29"
             barTintColor="white"
